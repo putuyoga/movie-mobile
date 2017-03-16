@@ -1,6 +1,6 @@
 import { StackNavigator } from 'react-navigation';
-import HomeScreen from './pages/HomeScreen';
-import MovieDetailScreen from './pages/MovieDetailScreen';
+import HomeScreen from '../containers/HomeScreen';
+import MovieDetailScreen from '../containers/MovieDetailScreen';
 
 const AppNavigator = StackNavigator({
   Home: { screen: HomeScreen },

@@ -9,7 +9,7 @@ class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Movies',
   };
-
+  
   constructor() {
     super();
     const movies = [
@@ -29,10 +29,16 @@ class HomeScreen extends React.Component {
     };
   }
 
+  renderRow = (rowData) => {
+    return (
+      <Button onPress={() => navigate('MovieDetail')} title={rowData.name} />
+    );
+  }
+
   render() {
     const { navigate } = this.props.navigation;
     return (
-        <ListView dataSource={this.state.dataSource} renderRow={(rowData) => <Button onPress={() => navigate('MovieDetail')} title={rowData.name} />}/>
+        <ListView dataSource={this.state.dataSource} renderRow={renderRow} />
     );
   }
 }
