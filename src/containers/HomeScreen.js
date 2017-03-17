@@ -16,6 +16,7 @@ class HomeScreen extends React.Component {
   
   constructor() {
     super();
+    this.dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
   }
 
   _navigateToMovieDetail = (movieId) => {
@@ -31,9 +32,11 @@ class HomeScreen extends React.Component {
   }
 
   render() {
-
-    const { movieDataSource } = this.props;
+    
+    const { movie } = this.props;
     const { isLoading } = this.props.movie;
+    const movieDataSource = this.dataSource.cloneWithRows(movie.data);
+
     return (
       <View>
         <ListView dataSource={movieDataSource} renderRow={this._renderRow} enableEmptySections={true}/>
@@ -44,11 +47,9 @@ class HomeScreen extends React.Component {
 }
 
 const mapStateToProps = (store) => {
-  const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
   return {
     // component props : store property
-    movie: store.movie,
-    movieDataSource: ds.cloneWithRows(store.movie.data)
+    movie: store.movie
   }
 }
 
