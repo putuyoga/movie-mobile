@@ -1,9 +1,39 @@
 import React, { PropTypes } from 'react';
-import { Component, Button } from 'react-native';
+import {
+  Component,
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight
+} from 'react-native';
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    padding: 10,
+    backgroundColor: '#F6F6F6',
+  },
+  thumb: {
+    width: 64,
+    height: 64,
+  },
+  text: {
+    flex: 1,
+  },
+});
 
 const MovieCard = ({movie, navigateToMovieDetail}) => {
   return(
-    <Button onPress={() => navigateToMovieDetail(movie.id)} title={movie.name} />
+    <TouchableHighlight onPress={() => navigateToMovieDetail(movie.id)}>
+      <View style={styles.row}>
+        <Text style={styles.text}>
+          {movie.name}
+        </Text>
+        <Text>{movie.year}</Text>
+      </View>
+    </TouchableHighlight>
   )
 }
 
