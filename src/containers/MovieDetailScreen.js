@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
-  Text
+  Text,
+  View
 } from 'react-native';
 
 class MovieDetailScreen extends React.Component {
@@ -14,10 +16,26 @@ class MovieDetailScreen extends React.Component {
   }
 
   render() {
+    const { isLoading, movieDetail } = this.props;
     return (
-        <Text>This is Detail Page. Should be implement REDUX after this!</Text>
+      <View>
+        { isLoading ? <Text>Please wait, while we're loading detail</Text> : 
+        <View>
+          <Text>{movieDetail.name}</Text>
+          <Text>{movieDetail.movieDetail.directorName}</Text>
+        </View>
+        }
+      </View>
     );
   }
 }
 
-export default MovieDetailScreen;
+
+const mapStateToProps = (store) => {
+  return {
+    // component props : store property
+    movieDetail: store.movie.currentDetail,
+    isLoading: store.movie.isDetailLoading
+  }
+}
+export default connect(mapStateToProps)(MovieDetailScreen)
