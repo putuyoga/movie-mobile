@@ -13,7 +13,8 @@ const movieReducer = (state = initialState, action) => {
         // primary movie list request
         case constants.MOVIE_LOAD_REQUEST: return {
             ...state,
-            isLoading: true
+            isLoading: true,
+            error: false
         };
         case constants.MOVIE_LOAD_FAILED: return {
             ...state,
@@ -23,13 +24,15 @@ const movieReducer = (state = initialState, action) => {
         case constants.MOVIE_LOAD_SUCCESS: return {
             ...state,
             isLoading: false,
-            data: [...state.data, ...action.payload]
+            data: [...state.data, ...action.payload],
+            error: false
         };
 
         // movie detail request
         case constants.MOVIE_DETAIL_LOAD_REQUEST: return {
             ...state,
-            isDetailLoading: true
+            isDetailLoading: true,
+            error: false
         };
         case constants.MOVIE_DETAIL_LOAD_FAILED: return {
             ...state,
@@ -39,7 +42,8 @@ const movieReducer = (state = initialState, action) => {
         case constants.MOVIE_DETAIL_LOAD_SUCCESS: return {
             ...state,
             isDetailLoading: false,
-            currentDetail: action.payload
+            currentDetail: action.payload,
+            error: false
         };
         default: return state;
     }
