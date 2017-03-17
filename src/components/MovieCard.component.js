@@ -28,8 +28,9 @@ const styles = StyleSheet.create({
 });
 
 const MovieCard = ({movie, navigateToMovieDetail}) => {
+  const navigateFunc = () => navigateToMovieDetail(movie.id);
   return(
-    <TouchableHighlight onPress={() => navigateToMovieDetail(movie.id)}>
+    <TouchableHighlight onPress={navigateFunc}>
       <View style={styles.row}>
         <Text style={styles.text}>{movie.name}</Text>
         <Text style={styles.yearText}>{movie.year}</Text>

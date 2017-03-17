@@ -33,7 +33,8 @@ class MovieDetailScreen extends React.Component {
       height: 300
     },
     imageContainer: {
-      backgroundColor: 'gray'
+      backgroundColor: 'gray',
+      marginBottom: 12
     },
     rating: {
       padding: 2,
@@ -42,9 +43,8 @@ class MovieDetailScreen extends React.Component {
     }
   });
 
-  getImageUrl(movieId) {
+  _getImageUrl(movieId) {
     const url = 'http://192.168.0.113:3000/movies/' + movieId + '/image';
-    console.log(url);
     return url;
   }
 
@@ -52,10 +52,10 @@ class MovieDetailScreen extends React.Component {
     const { isLoading, movie } = this.props;
     return (
       <View style={this.styles.container}>
-        { isLoading ? <Text>Please wait, while we're loading detail</Text> : 
+        { isLoading ? <Text>Please wait, while we're loading the detail</Text> : 
         <View>
           <View style={this.styles.imageContainer}>
-            <Image style={this.styles.image} source={[{uri: this.getImageUrl(movie.id)}]} />
+            <Image style={this.styles.image} source={[{uri: this._getImageUrl(movie.id)}]} />
           </View>
           <Text style={this.styles.title}>{movie.name}</Text>
           <Text style={this.styles.year}>{movie.year}</Text>
