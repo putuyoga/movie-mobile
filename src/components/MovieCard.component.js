@@ -22,16 +22,17 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
   },
+  yearText: {
+    color: 'grey'
+  }
 });
 
 const MovieCard = ({movie, navigateToMovieDetail}) => {
   return(
     <TouchableHighlight onPress={() => navigateToMovieDetail(movie.id)}>
       <View style={styles.row}>
-        <Text style={styles.text}>
-          {movie.name}
-        </Text>
-        <Text>{movie.year}</Text>
+        <Text style={styles.text}>{movie.name}</Text>
+        <Text style={styles.yearText}>{movie.year}</Text>
       </View>
     </TouchableHighlight>
   )
