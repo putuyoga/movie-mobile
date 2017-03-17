@@ -6,6 +6,7 @@ import {
   View,
   Button
 } from 'react-native';
+import MovieCard from '../components/MovieCard.component';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/movie';
 
@@ -27,7 +28,7 @@ class HomeScreen extends React.Component {
 
   _renderRow = (rowData) => {
       return (
-        <Button onPress={() => this._navigateToMovieDetail(rowData.id)} title={rowData.name} />
+        <MovieCard navigateToMovieDetail={this._navigateToMovieDetail} movie={rowData} />
       );
   }
 

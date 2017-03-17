@@ -1,14 +1,15 @@
-import React from 'react';
-import { Component } from 'react-native';
+import React, { PropTypes } from 'react';
+import { Component, Button } from 'react-native';
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({movie, navigateToMovieDetail}) => {
   return(
-    <Text>{movie.name}</Text>
+    <Button onPress={() => navigateToMovieDetail(movie.id)} title={movie.name} />
   )
 }
 
-Movie.propTypes = {
-  movie: PropTypes.object.isRequired
+MovieCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+  navigateToMovieDetail: PropTypes.func.isRequired
 }
 
 export default MovieCard;
